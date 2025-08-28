@@ -8,10 +8,10 @@ export const Navbar = () => {
 				<Link to="/" className="navbar-brand d-flex align-items-center gap-2">
 					<img
 						src="https://cdn.freebiesupply.com/logos/large/2x/star-wars-logo-png-transparent.png"
-						style={{ width: '44px', height: '44px', objectFit: 'contain' }}
+						style={{ width: '120px', height: '65px', objectFit: 'contain', backgroundColor: "white" }}
 						alt="Logo StarWars"
 					/>
-					<span className="fw-semibold">StarWars DB</span>
+					<span className="fw-semibold">Star Wars Blog</span>
 				</Link>
 				<div className="ms-auto">
 					<Favorites />
