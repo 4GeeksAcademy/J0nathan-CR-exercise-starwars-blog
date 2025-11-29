@@ -5,12 +5,13 @@ import { Link } from 'react-router-dom'
 const Favorites = () => {
     const { store, dispatch } = useGlobalReducer()
 
-    function handleDeleteFavorite(favoriteUid) {
+    function handleDeleteFavorite(favoriteUid, featureFav) {
         const favoritesUpdate = store.starWars.favorites.filter(
-            favorite => favorite.uid !== favoriteUid
-        )
+            favorite => !(favorite.uid === favoriteUid && favorite.featureFav === featureFav)
+        );
         dispatch({ type: 'delete_favorite', payload: favoritesUpdate });
     }
+
 
     return (
         <div className="btn-group">
@@ -32,9 +33,13 @@ const Favorites = () => {
                                         {favorite.name}
                                     </button>
                                 </Link>
-                                <button className="btn btn-sm btn-outline-danger ms-2" onClick={() => { handleDeleteFavorite(favorite.uid) }}>
+                                <button
+                                    className="btn btn-sm btn-outline-danger ms-2"
+                                    onClick={() => handleDeleteFavorite(favorite.uid, favorite.featureFav)}
+                                >
                                     <i className="fa-solid fa-trash-can"></i>
                                 </button>
+
                             </li>
                         )
                     }
